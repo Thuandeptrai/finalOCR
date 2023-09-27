@@ -1,0 +1,126 @@
+{
+  "user":[
+      {
+      "id": 1,
+      "title": "MOORE, Alicia M (9901_37)",
+      "gender": "Female",
+      "dayOfBirth": "25, Jun 1924 (Age: 99)",
+      "room": "37",
+      "medicaneNo": "",
+      "section": "Community Patients",
+      "RACID": "9999",
+      "facility": "Communityy",
+      "doctor": "SMITH, Johnn",
+      "expiryDate": "30/05/2019",
+      "listMedication": [
+          {
+              "id": 1,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "PO",
+              "takeMedicines": "One four times a day (For: Indication 004)",
+              "times": " 08:00, 12:00, 17:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": "DO NOT CRUSH"
+          },
+          {
+              "id": 2,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "PO",
+              "takeMedicines": "One four times a day ",
+              "times": "08:00, 12:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": ""
+          },
+          {
+              "id": 3,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "O",
+              "takeMedicines": "One four times a day ",
+              "times": "08:00, 12:00, 17:00, 20:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": ""
+          },
+          {
+              "id": 4,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "PO",
+              "takeMedicines": "One four times a day ",
+              "times": "08:00, 12:00, 17:00, 20:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": "DO NOT CRUSH"
+          },
+          {
+              "id": 5,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "O",
+              "takeMedicines": "One four times a day ",
+              "times": "08:00, 12:00, 17:00, 20:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": "DO NOT CRUSH"
+          }
+      ]
+  },
+  {
+      "id": 2,
+      "title": "PITT, Brad (9901_96)",
+      "gender": "Male",
+      "dayOfBirth": "05, Jun 1940 (Age: 99)",
+      "room": "96",
+      "medicaneNo": "",
+      "section": "Community Patients",
+      "RACID": "9999",
+      "facility": "Communityy",
+      "doctor": "JUSTICE, Aminoya",
+      "expiryDate": "30/05/2019",
+      "listMedication": [
+          {
+              "id": 1,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "PO",
+              "takeMedicines": "One four times a day ",
+              "times": "08:00, 12:00, 17:00, 20:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": "DO NOT CRUSH"
+          }
+      ]
+  },
+  {
+      "id": 3,
+      "title": "MOORE, Alicia M (9901_37)",
+      "gender": "Female",
+      "dayOfBirth": "25, Jun 1924 (Age: 99)",
+      "room": "37",
+      "medicaneNo": "",
+      "section": "Community Patients",
+      "RACID": "9999",
+      "facility": "Communityy",
+      "doctor": "SMITH, Johnn",
+      "expiryDate": "30/05/2019",
+      "listMedication": [
+          {
+              "id": 1,
+              "name": "Akineton 2mg Tablet",
+              "description": "Biperiden HCL",
+              "routes": "PO",
+              "takeMedicines": "One four times a day ",
+              "times": "(For: Indication 004) 08:00, 12:00, 17:00, 20:00",
+              "startDate": "06/05/2020",
+              "scriptNumber": "22890",
+              "crush": "DO NOT CRUSH"
+          }
+      ]
+  }
+  ]
+}
