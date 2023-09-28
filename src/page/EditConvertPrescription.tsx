@@ -4,6 +4,7 @@ import { BsPencilFill } from "react-icons/bs";
 import { AiFillSave } from "react-icons/ai";
 import noImage from "../image/No-Image-Placeholder.svg.webp";
 import { Button } from "antd";
+import * as cheerio from "cheerio";
 import { FaUpload } from "react-icons/fa";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +32,7 @@ export const EditConvertPrescription: React.FC<{}> = () => {
     const reader = new FileReader();
     reader.readAsDataURL(selectedImage);
     reader.onloadend = async () => {
-      let base64data:any = reader?.result
+      let base64data: any = reader?.result;
       var strImage = base64data.replace(/^data:image\/[a-z]+;base64,/, "");
       //   curl -X 'POST' \
       // 'http://174.138.20.71:8080/table_recognizer' \
@@ -51,10 +52,70 @@ export const EditConvertPrescription: React.FC<{}> = () => {
         },
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       }).then((res) => {
-        console.log(res);
-        setPreviewText(res.data);
+        const pattern = /<tr>\s*<td><\/td>\s*<td><\/td>\s*<\/tr>/g;
+        const pattern1 = /<tr>\s*<td><\/td>\s*<\/tr>/g;
+        let formatData = res.data.replace(pattern, "");
+        const finalData = formatData.replace(pattern1, "");
+        const $ = cheerio.load(finalData);
+
+        // remove empty rows
+        $("tr").each(function () {
+          var $this = $(this);
+          if ($this.text().trim() === "") {
+            $this.remove();
+          }
+        });
+        const leftOver: any = [];
+        const location: any = [];
+        // remove <tr> <td>{content} </td> </tr> rows and push to array
+        $("tr").each(function (i) {
+          var $this = $(this);
+          // count number of td in each tr
+          const tdLength = $this.find("td");
+          // check all td in tr is empty or not
+          tdLength.each(function (index) {
+            if ($(this).text().trim() === "") {
+              console.log($(this).text().trim());
+              // push previous td to array or next td to array
+              leftOver.push(
+                $(this).prev().text().trim() || $(this).next().text().trim()
+              );
+              location.push(i - 1 - location.length);
+              $this.remove();
+            } else {
+              // if td is not empty, push to array
+            }
+          });
+        });
+        // push leftOver to td
+        $("tr").each(function (i) {
+          var $this = $(this);
+          const tdLength = $this.find("td");
+          // check i is in location array  or not
+          if (location.includes(i)) {
+            // push leftOver to td
+            tdLength.each(function (index) {
+              if (index === 0) {
+                let text = $(this).text();
+
+                $(this).text(text + " " + leftOver[0]);
+                leftOver.shift();
+              }
+            });
+          }
+        });
+        console.log(leftOver);
+        console.log(location);
+        $("table").addClass(
+          "w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        );
+        $("tr").addClass("border-b border-gray-200 dark:border-gray-700");
+        $("td").addClass(
+          "py-3 px-4 border-l border-gray-200 dark:border-gray-700"
+        );
+        setPreviewText($.html());
       });
     };
   };
@@ -170,17 +231,15 @@ export const EditConvertPrescription: React.FC<{}> = () => {
           </div>
           <div className="border border-white w-full my-5"></div>
           {show ? (
-            <div className="relative overflow-x-auto min-h-[405px] border">
-             
-            </div>
+            <div className="relative overflow-x-auto min-h-[405px] border"></div>
           ) : (
             <div className="relative overflow-x-auto min-h-[405px] border">
-              <div
-               
-              >
-                <span  dangerouslySetInnerHTML={{
-                  __html: previewText,
-                }}></span>
+              <div>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: previewText,
+                  }}
+                ></span>
               </div>
             </div>
           )}

@@ -30,7 +30,7 @@ export const ListUser: React.FC<{}> = () => {
             {residents?.map((item:any)=> (
             <div className="h-[25vh] border mt-3 rounded-lg border-b-[3px] hover:border-b-teal-600">
                 <div className="flex py-4 h-full text-sm">
-                    <img src={noImage} alt="" className='w-[10%] mx-3 p-4'/>
+                    <img src={item?.imageSrc || noImage} alt="" className='w-[10%] mx-3 p-4'/>
                     <div className="flex w-1/4 items-center">
                     <div className=" font-medium text-lg">{item.title}</div>
                     <CgSandClock className='w-6 h-6'/>

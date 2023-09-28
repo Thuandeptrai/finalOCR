@@ -51,7 +51,7 @@ export const Profile: React.FC<{}> = () => {
     <div className="w-5/6 mx-5">
       <div className="h-[25vh] border rounded-lg border-b-[3px] text-black py-4 w-full">
         <div className="flex py-4 h-full text-sm">
-          <img src={noImage} alt="" className="w-[10%] mx-3" />
+          <img src={resident?.imageSrc || noImage} alt="" className="w-[10%] mx-3" />
           <div className="flex w-1/4 items-center">
             <div className=" font-medium text-lg">{resident?.title}</div>
             <CgSandClock className="w-6 h-6" />

@@ -71,6 +71,7 @@ interface IUser {
   facility: string;
   doctor: string;
   expiryDate: string;
+  imageSrc?: string;
   listMedication: any;
 }
 
