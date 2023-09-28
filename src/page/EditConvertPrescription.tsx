@@ -22,6 +22,7 @@ export const EditConvertPrescription: React.FC<{}> = () => {
   const { id } = useParams();
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [previewText, setPreviewText] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const [show, setShow] = useState(false);
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
@@ -43,6 +44,7 @@ export const EditConvertPrescription: React.FC<{}> = () => {
       // "image_base64":"string",
       // }
       // convert curl to axios
+      setLoading(true);
       const response = await axios({
         method: "post",
         url: `${config.baseUrl}/table_recognizer`,
@@ -106,17 +108,18 @@ export const EditConvertPrescription: React.FC<{}> = () => {
             });
           }
         });
-        console.log(leftOver);
-        console.log(location);
         $("table").addClass(
           "w-full text-sm text-left text-gray-500 dark:text-gray-400"
         );
         $("tr").addClass("border-b border-gray-200 dark:border-gray-700");
         $("td").addClass(
-          "py-3 px-4 border-l border-gray-200 dark:border-gray-700"
+          "py-3 px-4 border-l border-gray-200 text-center dark:border-gray-700"
         );
+        // Style thead>tr and center
+        $("thead>tr").addClass("bg-cyan-600 text-center text-white font-bold dark:bg-gray-800");
         setPreviewText($.html());
       });
+      setLoading(false);
     };
   };
   const handleConvert = (e: any) => {
@@ -223,6 +226,7 @@ export const EditConvertPrescription: React.FC<{}> = () => {
             <Button
               type="primary"
               onClick={handleAddNewMedicine}
+              disabled={loading}
               className="w-2/5 bg-blue-600 text-white rounded-lg flex justify-center py-6 font-bold items-center my-6 text-xl"
             >
               <SiConvertio className="mx-2" /> Import
