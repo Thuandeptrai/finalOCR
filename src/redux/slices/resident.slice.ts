@@ -5,7 +5,7 @@ export const fetchResident = createAsyncThunk<
   void,
   { rejectValue: string }
 >("resident/fetch", async (_, { rejectWithValue }) => {
-  const response = await fetch(`http://localhost:3000/user`);
+  const response = await fetch(`http://8.222.201.197:1433/users`);
   const data = await response.json();
   if (response.status < 200 || response.status >= 300) {
     return rejectWithValue(data);
@@ -19,7 +19,7 @@ export const fetchResidentById = createAsyncThunk<
   { rejectValue: string }
 >("resident/fetchById", async (id, { rejectWithValue, getState }) => {
   const state = getState() as any;
-  const response = await fetch(`http://localhost:3000/user/${id}`);
+  const response = await fetch(`http://8.222.201.197:1433/users/${id}`);
   let data = await response.json();
   if (response.status < 200 || response.status >= 300) {
     return rejectWithValue(data);
